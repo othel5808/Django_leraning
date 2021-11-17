@@ -127,4 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/.idea/misc.xml
+.idea/
+
+# database file
+db.sqlite3
