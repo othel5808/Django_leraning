@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+
+{% include 'head.html' %}
 <body>
 
+    {% include 'header.html' %}
+
+    {# extends를 사용하기 위해서 필요.#}
+    {% block content %}
+    {% endblock %}
+
+    {% include 'footer.html' %}
+
 </body>
+
 </html>
