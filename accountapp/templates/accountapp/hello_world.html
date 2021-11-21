@@ -5,8 +5,16 @@
 {% block content %}
 
     <div style="height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
-        스방 뭐가문제여
+        <h1> test</h1>
+        <form action="/account/hello_world/" method="post">
+            {% csrf_token %}
+            <!--btn과 btn-primary는 bootstrap에 이미 생성되어있는 클래스 -->
+            <input type="submit" class="btn btn-primary" value="Post Test">
+        </form>
 
+        <h1>
+            {{  text }}
+        </h1>
     </div>
 
 {% endblock %}
