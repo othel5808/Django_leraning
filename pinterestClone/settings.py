@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'UTC'
 
@@ -117,15 +117,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+# html에서 보이는 참고 자료 위치
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'statifiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-STATICFILES_DIR = [
+# 별도의 정적(static file)을 보관하는 폴더를 추가
+# 실질적인 정적 파일(static file) 참조 자료 위치
+STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
