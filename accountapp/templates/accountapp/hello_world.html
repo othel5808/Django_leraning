@@ -4,17 +4,25 @@
 
 {% block content %}
 
-    <div style="height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
+    <div style="height: 20rem; border-radius: 1rem; margin: 2rem; text-align: center">
         <h1> test</h1>
         <form action="/account/hello_world/" method="post">
             {% csrf_token %}
             <!--btn과 btn-primary는 bootstrap에 이미 생성되어있는 클래스 -->
-            <input type="submit" class="btn btn-primary" value="Post Test">
-        </form>
 
+            <div>
+                <input type="text" name="hello_world_input">
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="Post Test">
+            </div>
+
+        </form>
+        {% if hello_world_output %}
         <h1>
-            {{  text }}
+            {{  hello_world_output.text }}
         </h1>
+        {% endif %}
     </div>
 
 {% endblock %}
