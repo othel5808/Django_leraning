@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accountapp.models import HelloWorld
 
@@ -34,4 +34,12 @@ class AccountCreateView(CreateView):
     success_url = reverse_lazy('accountapp:hello_world')
     # 어느 HTML을 통해서 봐야할지
     # template_name='accountapp/create.html'
-    template_name='accountapp/create.html'
+    template_name = 'accountapp/create.html'
+
+
+class AccountDetailView(DetailView):
+    model = User
+    # 템플릿에서 사용하는 유저 객체의 이름을 설정 할 수 있음
+    context_object_name = 'target_user'
+    template_name = 'accountapp/detail.html'
+
