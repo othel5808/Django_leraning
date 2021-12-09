@@ -47,7 +47,7 @@ class AccountCreateView(CreateView):
 
 
 @method_decorator(has_ownership, 'get')
-@method_decorator(has_ownership, 'post')
+# @method_decorator(has_ownership, 'post')
 class AccountDetailView(DetailView):
     model = User
     # 템플릿에서 사용하는 유저 객체의 이름을 설정 할 수 있음
