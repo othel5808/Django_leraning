@@ -1,0 +1,18 @@
+{%  extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+
+    <div style="max-width: 500px; margin: 4em auto">
+        <div class="mb-4">
+            <h4>Quit</h4>
+        </div>
+        <form action="{% url 'accountapp:delete' pk=target_user.pk %}" method="post">
+            {% csrf_token %}
+            <!-- 아래와 같이 입력 할 경우, view에서 입력한 form에 필요한 정보를 그대로 보여주게 됨 -->
+{#            {{ form }}#}
+            <div style="text-align: center">
+                <input type="submit" class="btn btn-danger rounded-pill col-6 mt-3" value="제출" >
+            </div>
+        </form>
+    </div>
+{% endblock %}

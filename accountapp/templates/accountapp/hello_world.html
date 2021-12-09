@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{# block content 부터 endblock 까지의 내용을 변경 가능#}
+
+{% block content %}
+
+    <div style="height: 20rem; border-radius: 1rem; margin: 2rem; text-align: center">
+        <h1> test</h1>
+        <form action="/account/hello_world/" method="post">
+            {% csrf_token %}
+            <!--btn과 btn-primary는 bootstrap에 이미 생성되어있는 클래스 -->
+
+            <div>
+                <input type="text" name="hello_world_input">
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="Post Test">
+            </div>
+
+        </form>
+        {% if hello_world_list %}
+            {%  for hello_world in hello_world_list %}
+            <h4>
+                {{  hello_world.text }}
+            </h4>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock %}

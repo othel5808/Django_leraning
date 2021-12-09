@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+{% include 'head.html' %}
+<body>
+
+    {% include 'header.html' %}
+    <hr>
+    {# extends를 사용하기 위해서 필요.#}
+    {% block content %}
+    {% endblock %}
+    <hr>
+    {% include 'footer.html' %}
+
+</body>
+
+</html>
