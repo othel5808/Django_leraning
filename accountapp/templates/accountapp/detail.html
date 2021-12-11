@@ -6,10 +6,18 @@
             <p>
                 {{ target_user.date_joined }}
             </p>
-            {% if target_user.profile %}
+
+            <img src="{{ target_user.profile.image.url }}" alt="" style="height: 15rem; width: 15rem; border-radius: 20rem; margin-bottom: 2rem;">
+
+            {% if target_user.profile.pk  %}
             <h2 style="font-family: SansSerif">
                 {{ target_user.profile.nickname }}
             </h2>
+            <a href="{% url 'profileapp:update' pk=target_user.pk %}">
+                <p>
+                    update Profile
+                </p>
+            </a>
             {% else %}
             <a href="{% url 'profileapp:create' %}">
                 <p>
@@ -17,7 +25,9 @@
                 </p>
             </a>
             {% endif %}
-
+            <h4 style="margin-bottom: 10rem">
+                {{ target_user.profile.message }}
+            </h4>
             {% if target_user.pk == user.pk %}
             <a href="{% url 'accountapp:update'  pk=target_user.pk %}">
                 <p>
