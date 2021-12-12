@@ -4,7 +4,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 
 from articleapp.decorators import Article_ownership_required
 from articleapp.form import ArticleCreationForm
@@ -23,7 +23,7 @@ class ArticleCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('accountapp:detail', kwargs={'pk':self.object.pk})
+        return reverse('articleapp:detail', kwargs={'pk': self.object.pk})
 
 
 
@@ -52,6 +52,10 @@ class ArticleDeleteView(DeleteView):
     success_url = reverse_lazy('articleapp:list')
     context_object_name = 'target_article'
 
-# 'articleapp:delete.html'
+class ArticleListView(ListView):
+    model = Article
+    template_name = 'articleapp/list.html'
+    context_object_name = 'article_list'
+    paginate_by = 1
 
 

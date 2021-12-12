@@ -3,70 +3,48 @@
 {% load bootstrap4 %}
 {% block content %}
 
-<style>
-    .container div {
-      width: 200px;
-      background-color: antiquewhite;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 1rem;
-    }
+    <style>
+        .container div {
+          width: 200px;
+          background-color: antiquewhite;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 1rem;
+        }
 
-    .container img {
-        widht: 100%;
-        height: 100%;
-        border-radius: 1rem;
-    }
-</style>
+        .container img {
+            width: 100%;
+            {#object-fit:cover;#}
+            border-radius: 1rem;
+        }
+    </style>
 
+    {% if article_list %}
 
-<div class="container">
-  <div class="item1">
-      <img src="https://picsum.photos/200/300" alt="">
-  </div>
-  <div class="item2">
-           <img src="https://picsum.photos/200/250" alt="">
-  </div>
-  <div class="item3">
-           <img src="https://picsum.photos/200/280" alt="">
-  </div>
-  <div class="item4">
-           <img src="https://picsum.photos/200/275" alt="">
-  </div>
-  <div class="item5">
-           <img src="https://picsum.photos/200/200" alt="">
-  </div>
-  <div class="item6">
-           <img src="https://picsum.photos/200/350" alt="">
-  </div>
-  <div class="item7">
-           <img src="https://picsum.photos/200/235" alt="">
-  </div>
-  <div class="item8">
-      <img src="https://picsum.photos/200/320" alt="">
-  </div>
-  <div class="item9">
-      <img src="https://picsum.photos/200/300" alt="">
-  </div>
-  <div class="item10">
-      <img src="https://picsum.photos/200/220" alt="">
-  </div>
-  <div class="item11">
-      <img src="https://picsum.photos/200/230" alt="">
-  </div>
-  <div class="item12">
-      <img src="https://picsum.photos/200/275" alt="">
-  </div>
-  <div class="item13">
-      <img src="https://picsum.photos/200/222" alt="">
-  </div>
-</div>
+        <div class="container">
+
+            {% for article in article_list %}
+
+            <a href="{% url 'articleapp:detail' pk=article.pk %}">
+                {% include 'snippets/card.html' with article=article%}
+            </a>
+
+            {% endfor %}
+        </div>
+        <script src="{% static 'js/MagicGrid.js' %}"></script>
+
+        {% include 'snippets/pagination.html' with page_obj=page_obj %}
+    {% else %}
+        <div style="text-align: center">
+            <h1>No Articles YET!</h1>
+        </div>
+    {% endif %}
 
     <div style="text-align: center">
-        <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill col-6 mt-3">
-            Create Article
-        </a>
+    <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill col-6 mt-3">
+        Create Article
+    </a>
     </div>
-    <script src="{% static 'js/MagicGrid.js' %}"></script>
+
 {% endblock %}
