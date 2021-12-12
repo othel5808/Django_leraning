@@ -131,3 +131,5 @@ dmypy.json
 
 # database file
 db.sqlite3
+
+*/migrations
