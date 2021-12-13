@@ -27,6 +27,13 @@
                     <p>Delete Article</p>
                 </a>
             {% endif %}
+        <hr>
+        {% if user.is_authenticated %}
+            {% include 'commentapp/create.html' with article=target_article %}
+        {% else %}
+            <a href="{% url 'accountapp:login' %}?next={{ request.path }}">댓글을 달기 위해서는 로그인이 필요합니다.</a>
+        {% endif %}
+
         </div>
     </div>
 {% endblock %}
